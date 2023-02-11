@@ -154,6 +154,12 @@ print("a > b   ", compare(x, y))
 # new_list = list(map(lambda a: a + 1, source_list))
 
 
+def square(x):
+    return x**2
+# this can be alternatively written as:
+square = lambda x : x**2
+
+
 print('\n\n\n Lambda as a sort key\n', '-' * 30, '\n')
 
 # Lambda functions are often used as parameters to build-ins. We could have defined a function that takes one argument
