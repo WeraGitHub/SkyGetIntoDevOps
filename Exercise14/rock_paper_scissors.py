@@ -31,18 +31,16 @@ def computer_choice():
 
 
 def rock_paper_scissors_game():
-    print("""
-Hello and welcome to the Rock..Paper...Scissors game!
-Remember Rock smashes Scissors, Paper wraps Rock, Scissors cut Paper!
-    """)
+    print("Hello and welcome to the Rock..Paper...Scissors game!\n"
+          "Remember Rock smashes Scissors, Paper wraps Rock, Scissors cut Paper!\n")
     user_input = user_choice()
     computer_input = computer_choice()
+
     if user_input not in valid_choices:
         return print("You didn't enter R nor S nor P, I take it you don't want to play. Bye.")
-    print(f"""
-    Your choice: {user_input}
-    Computer choice: {computer_input}
-    """)
+
+    print(f"\nYour choice: {user_input}\nComputer choice: {computer_input}\n")
+
     if user_input == computer_input:
         print("You drew against the computer!")
     else:
@@ -61,7 +59,15 @@ Remember Rock smashes Scissors, Paper wraps Rock, Scissors cut Paper!
                 print('Computer won!!!')
             else:
                 print('You are the winner!!!')
-    print('Good game')
+
+    print('\nGood game')
+
+    play_again = input('\nWant to play again?\n Type Y for yes, otherwise type anything else: ')
+    if play_again.lower().strip() == 'y':
+        print('\nOkay! Here we go! \n')
+        rock_paper_scissors_game()
+    else:
+        print('OK, bye :)')
 
 
 rock_paper_scissors_game()
