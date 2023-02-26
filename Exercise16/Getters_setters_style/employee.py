@@ -6,18 +6,21 @@ class Employee(Person):
 
     number_of_employees = 0
 
-    def __init__(self, firstname, lastname, dob_day, dob_month, dob_year, gender, address, company, department,
-                 position, employee_id, start_date_day, start_day_month, start_day_year, salary, holidays=25):
-        super().__init__(firstname, lastname, dob_day, dob_month, dob_year, gender, address)
+    def __init__(self, firstname, lastname, dob, gender, address, company, department,
+                 position, employee_id, start_date, salary, holidays=25):
+        super().__init__(firstname, lastname, dob, gender, address)
         self.__company = company
         self.department = department
         self.position = position
         self.__employee_id = employee_id
         self.__employee = True
-        self.__start_date = datetime.datetime(start_day_year, start_day_month, start_date_day)
+        self.__start_date = start_date
         self.salary = salary
         self.holidays = holidays
         Employee.number_of_employees += 1
+
+    def __str__(self):
+        return f"{self.get_firstname()} {self.get_lastname()} is an instance of a class Employee (Person)."
 
     def get_company(self):
         return self.__company
@@ -68,7 +71,7 @@ class Employee(Person):
 
     def calculate_how_many_years_with_company(self):
         today = datetime.date.today()
-        start_date = self.get_start_date().date()
+        start_date = self.get_start_date()
         years = today.year - start_date.year - ((today.month, today.day) < (start_date.month, start_date.day))
         return years
 

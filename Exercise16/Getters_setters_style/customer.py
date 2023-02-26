@@ -5,13 +5,16 @@ class Customer(Person):
 
     number_of_customers = 0
 
-    def __init__(self, firstname, lastname, dob_day, dob_month, dob_year, gender, address, customer_id,
+    def __init__(self, firstname, lastname, dob, gender, address, customer_id,
                  loyalty_points=0):
-        super().__init__(firstname, lastname, dob_day, dob_month, dob_year, gender, address)
+        super().__init__(firstname, lastname, dob, gender, address)
         self.__customer_id = customer_id
         self.__customer = True
         self.loyalty_points = loyalty_points
         Customer.number_of_customers += 1
+
+    def __str__(self):
+        return f"{self.get_firstname()} {self.get_lastname()} is an instance of a class Customer (Person)."
 
     def get_customer_id(self):
         return self.__customer_id
@@ -29,7 +32,8 @@ class Customer(Person):
         self.loyalty_points += points
 
     def get_customer_info(self):
-        return f"Customer name: {self.get_full_name()}, id: {self.get_customer_id()}, loyalty points accumulated: " \
+        return f"Customer name: {self.get_firstname()} {self.get_lastname()}, id: {self.get_customer_id()}" \
+               f", loyalty points accumulated: " \
                f"{self.get_loyalty_points()}"
 
     def purchase(self, item):
@@ -38,5 +42,5 @@ class Customer(Person):
         print("Total loyalty points: " + str(self.get_loyalty_points()))
 
     @classmethod
-    def get_number_of_customer_instances(cls):
+    def get_number_of_customers(cls):
         return cls.number_of_customers
