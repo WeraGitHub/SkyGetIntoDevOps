@@ -1,4 +1,4 @@
-# appw7.py is the main file responsible for running the app
+# app_w7.py is the main file responsible for running the app
 from flask import Flask, Response, request
 
 # instantiate the Flask application object
